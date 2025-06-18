@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WakaziLink - Empowering Local Skills</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2a6df4;
+            --secondary: #f39c12;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --success: #27ae60;
+            --danger: #e74c3c;
+            --gray: #7f8c8d;
+            --light-gray: #bdc3c7;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .logo i {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: var(--white);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2a6df4 0%, #1a4abf 100%);
+            color: var(--white);
+            padding: 5rem 5%;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        /* Features Section */
+        .section {
+            padding: 5rem 5%;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(42, 109, 244, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .feature-icon i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            background-color: var(--light);
+        }
+        
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            width: 30px;
+            height: 2px;
+            background-color: var(--light-gray);
+        }
+        
+        /* Categories */
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .category {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .category:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+        
+        .category i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .category:hover i {
+            color: var(--white);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--light);
+        }
+        
+        .testimonial-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            overflow: hidden;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 0.3rem;
+        }
+        
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Stats */
+        .stats {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 5%;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 5rem 5%;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 4rem 5% 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Navigation */
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .step:not(:last-child)::after {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: var(--shadow);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-hands-helping"></i>
+                <span>WakaziLink</span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="login.php" class="btn btn-outline">Log In</a>
+                <a href="login.php" class="btn btn-primary">Sign Up</a>
+            </div>
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Empowering Local Skills in Kenya</h1>
+            <p>Connecting skilled workers with clients through a trusted digital platform. Find plumbers, tailors, welders, and more with just a few clicks.</p>
+            <div class="hero-buttons">
+                <a href="login.php" class="btn btn-secondary">Find a Worker</a>
+                <a href="login.php" class="btn btn-outline">Become a Provider</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <div class="section-title">
+            <h2>Our Solution</h2>
+            <p>WakaziLink provides a comprehensive platform that connects skilled workers to local clients with verified profiles and reviews.</p>
+        </div>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-user-check"></i>
+                </div>
+                <h3>Verified Profiles</h3>
+                <p>Create a trusted digital profile with verified skills and experience.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3>Location-Based Search</h3>
+                <p>Find skilled workers near you with our location filters.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h3>Easy Booking</h3>
+                <p>Accept bookings and manage your availability in real-time.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Reviews & Ratings</h3>
+                <p>Build trust with client reviews and ratings for quality service.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Mobile Payments</h3>
+                <p>Secure payments via M-Pesa, Paystack and other mobile money platforms.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-badge-check"></i>
+                </div>
+                <h3>Premium Features</h3>
+                <p>Get verified badges and priority listing with premium subscriptions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section how-it-works" id="how-it-works">
+        <div class="section-title">
+            <h2>How WakaziLink Works</h2>
+            <p>Simple steps to connect skilled workers with clients in your community</p>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Create Profile</h3>
+                <p>Workers create a verified profile showcasing their skills and experience.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Search & Find</h3>
+                <p>Clients search for local workers by skill and location.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Book & Connect</h3>
+                <p>Clients book services and communicate directly with workers.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Work & Pay</h3>
+                <p>Work completed and payment made securely through the platform.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Opportunity -->
+    <section class="section">
+        <div class="section-title">
+            <h2>Market Opportunity</h2>
+            <p>Why WakaziLink is the right solution at the right time</p>
+        </div>
+        <div class="stats">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">80%+</div>
+                    <div class="stat-label">of Kenya's workforce in informal sector</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">Millions</div>
+                    <div class="stat-label">of potential users across Kenya</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">Growing</div>
+                    <div class="stat-label">smartphone & internet access</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="section" id="categories">
+        <div class="section-title">
+            <h2>Popular Categories</h2>
+            <p>Find skilled workers across various service categories</p>
+        </div>
+        <div class="categories">
+            <div class="category">
+                <i class="fas fa-faucet"></i>
+                <h3>Plumbers</h3>
+            </div>
+            <div class="category">
+                <i class="fas fa-tshirt"></i>
+                <h3>Tailors</h3>
+            </div>
+            <div class="category">
+                <i class="fas fa-tools"></i>
+                <h3>Welders</h3>
+            </div>
+            <div class="category">
+                <i class="fas fa-paint-roller"></i>
+                <h3>Painters</h3>
+            </div>
+            <div class="category">
+                <i class="fas fa-bolt"></i>
+                <h3>Electricians</h3>
+            </div>
+            <div class="category">
+                <i class="fas fa-hammer"></i>
+                <h3>Carpenters</h3>
+            </div>
+            <div class="category">
+                <i class="fas fa-soap"></i>
+                <h3>Cleaners</h3>
+            </div>
+            <div class="category">
+                <i class="fas fa-utensils"></i>
+                <h3>Caterers</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials" id="testimonials">
+        <div class="section-title">
+            <h2>What Our Users Say</h2>
+            <p>Real stories from workers and clients using WakaziLink</p>
+        </div>
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    "Before WakaziLink, I struggled to find consistent work as a tailor. Now, I get 3-5 bookings every week. This platform has changed my life!"
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="author-info">
+                        <h4>Sarah M.</h4>
+                        <p>Tailor in Nairobi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta" id="contact">
+        <h2>Ready to Get Started?</h2>
+        <p>Join thousands of skilled workers and clients already using WakaziLink to connect and grow their businesses.</p>
+        <div class="hero-buttons">
+            <a href="login.php" class="btn btn-primary">Sign Up as Client</a>
+            <a href="login.php" class="btn btn-secondary">Register as Worker</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>WakaziLink</h3>
+                <p>Empowering local skills and connecting communities through technology.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">Partnerships</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> manfredoku@gmail.com</li>
+                    <li><i class="fas fa-phone"></i> 0750450254</li>
+                    <li><i class="fas fa-map-marker-alt"></i> kilifi, Kenya</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 WakaziLink. All rights reserved. Created by Manfred Okumu</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile navigation toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+        
+        // Simple testimonial rotation
+        const testimonials = [
+            {
+                content: "WakaziLink helped me find a reliable plumber within minutes. The service was excellent and reasonably priced. Highly recommended!",
+                name: "John K.",
+                role: "Client in Mombasa"
+            },
+            {
+                content: "As a welder, I've doubled my income since joining WakaziLink. The platform is easy to use and brings me quality clients every day.",
+                name: "David O.",
+                role: "Welder in Kisumu"
+            },
+            {
+                content: "Finding skilled workers used to be such a challenge. With WakaziLink, I can browse verified profiles and book services instantly. Game changer!",
+                name: "Grace W.",
+                role: "Property Manager"
+            }
+        ];
+        
+        let currentTestimonial = 0;
+        const testimonialElement = document.querySelector('.testimonial-content');
+        const authorName = document.querySelector('.author-info h4');
+        const authorRole = document.querySelector('.author-info p');
+        
+        function rotateTestimonial() {
+            testimonialElement.textContent = testimonials[currentTestimonial].content;
+            authorName.textContent = testimonials[currentTestimonial].name;
+            authorRole.textContent = testimonials[currentTestimonial].role;
+            
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+        }
+        
+        // Rotate testimonials every 5 seconds
+        setInterval(rotateTestimonial, 5000);
+        
+        // Initialize with the first testimonial
+        rotateTestimonial();
+    </script>
+</body>
+</html>
